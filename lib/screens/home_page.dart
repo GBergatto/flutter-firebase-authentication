@@ -7,18 +7,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Home"),
+      ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("HOME"),
-            ElevatedButton(
-              onPressed: () {
-                context.read<AuthenticationService>().signOut();
-              },
-              child: Text("Sign Out"),
-            )
-          ],
+        child: ElevatedButton(
+          onPressed: () {
+            context.read<AuthenticationService>().signOut();
+          },
+          child: Text("Sign Out"),
         ),
       ),
     );

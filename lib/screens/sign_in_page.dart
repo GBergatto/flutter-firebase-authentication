@@ -10,30 +10,39 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          TextField(
-            controller: emailController,
-            decoration: InputDecoration(
-              labelText: "Email",
+      appBar: AppBar(
+        title: Text("Sign In"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          children: [
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                labelText: "Email",
+              ),
             ),
-          ),
-          TextField(
-            controller: passwordController,
-            decoration: InputDecoration(
-              labelText: "Password",
+            TextField(
+              controller: passwordController,
+              decoration: InputDecoration(
+                labelText: "Password",
+              ),
             ),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              context.read<AuthenticationService>().signIn(
-                    email: emailController.text.trim(),
-                    password: passwordController.text.trim(),
-                  );
-            },
-            child: Text("Sign in"),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  context.read<AuthenticationService>().signIn(
+                        email: emailController.text.trim(),
+                        password: passwordController.text.trim(),
+                      );
+                },
+                child: Text("Sign in"),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
